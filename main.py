@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 
 @app.route("/")
+@app.route("/home")
 def page_index():
     """Выводит список всех кандидатов"""
     candidates = load_candidates()
@@ -27,7 +28,7 @@ def cand_name(name):
     """Возвращает список кандидатов, в имени которых содержатся введённые символы"""
     candidates = get_candidates_by_name(name)
     if candidates == "Кандидата с таким именем нет":
-        return candidates
+        return f'<a href="../home">На главную</a><br>{candidates}'
     else:
         amount = len(candidates)
         page = render_template("search.html", candidates=candidates, amount=amount)
@@ -44,4 +45,4 @@ def cand_skill(skill_name):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
