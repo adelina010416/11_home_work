@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<h2>Найдено кандидатов {{amount}}</h2>
+{%for candidate in candidates%}
+	<p><a href="/candidate/{{candidate.id}}">{{candidate.name}}</a></p>
+{%endfor%}
+
+</body>
+</html>
